@@ -2,9 +2,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from encoder import TransformerEncoder, EncoderLayer
-from decoder import TransformerDecoder, DecoderLayer
-from position_encoding import PositionalEncoding
+from .encoder import TransformerEncoder, EncoderLayer
+from .decoder import TransformerDecoder, DecoderLayer
+from .position_encoding import PositionalEncoding
 
 class Transformer(nn.Module):
     def __init__(self, d_model, n_heads, n_enc_layers, n_dec_layers,
@@ -25,12 +25,6 @@ class Transformer(nn.Module):
         
         return output
     
-
-a = torch.randn(1,50,256)
-b = torch.randn(1,50,256)
-model = Transformer(d_model = 256, n_heads = 8, n_enc_layers = 6, n_dec_layers = 6, feed_dim = 256)
-print(model(a,b,None).shape)
-
 def build_transformer(args):
     
     return Transformer(
